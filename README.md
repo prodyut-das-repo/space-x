@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Server side rendering
 
-run `ng run ssr` to build and run the server
+run `npm run ssr` to build and run the server
 
 ## Development server
 
