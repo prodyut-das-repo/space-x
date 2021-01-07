@@ -1,0 +1,40 @@
+<div *ngIf="!showLoader && launches?.length > 0" class="main">
+  <h1>Launch Details</h1>
+  <ul class="cards">
+    <li class="cards_item" *ngFor="let launch of launches">
+      <div class="card">
+        <div class="card_image"><img src={{launch?.links?.mission_patch}}></div>
+        <div class="card_content">
+          <h5 class="text-white">{{launch?.mission_name}}</h5>
+          <p class="card_title">Mission ids: <label>{{launch?.mission_id[0]}}</label></p>
+          <p class="card_title">Successful Year: <label>{{launch?.launch_year}}</label></p>
+          <p class="card_title">Successful Launch: <label>{{launch?.launch_success}}</label></p>
+          <p class="card_title">Successful Landing:
+            <label>{{launch?.rocket?.first_stage?.cores[0]?.land_success}}</label>
+            <label *ngIf="launch?.rocket?.first_stage?.cores[0]?.land_success === null">--</label>
+          </p>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+<div *ngIf="launches?.length === 0">
+  <h1>No Data Available</h1>
+  <img class="image" src="https://i.pinimg.com/originals/ff/16/95/ff169501648fca527e132828c380b3ce.png">
+</div>
+<div class="center">
+  <div *ngIf="showLoader" class="lds-spinner">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>

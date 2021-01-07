@@ -1,0 +1,26 @@
+<div class="flex">
+    <div class="side-menu">
+        <span class="padding font">SpaceX Launch Program</span>
+        <nav>
+            <label class="label-header">Launch Years</label>
+            <div class="container row">
+                <div class="col-md-6" *ngFor="let item of year">
+                    <a (click)="filterOnClick(item)" [routerLink]="['/year/'+ item]">{{item}}</a>
+                </div>
+            </div>
+            <label class="label-header">Successful Launch</label>
+            <div class="row padding">
+                <div class="col-md-6"><button (click)="launchStatus(true)" class="btn btn-info">True</button></div>
+                <div class="col-md-6"><button (click)="launchStatus(false)" class="btn btn-info">False</button></div>
+            </div>
+            <label class="label-header">Successful Landing</label>
+            <div class="row padding">
+                <div class="col-md-6"><button (click)="landStatus(true)" class="btn btn-info">True</button></div>
+                <div class="col-md-6"><button (click)="landStatus(false)" class="btn btn-info">False</button></div>
+            </div>
+        </nav>
+    </div>
+    <div>
+        <app-launch-cards [launches]="launchData" [showLoader]="showLoader">Loading</app-launch-cards>
+    </div>
+</div>
