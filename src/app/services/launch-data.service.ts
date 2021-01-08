@@ -8,6 +8,7 @@ export class LaunchService {
     land: string;
     constructor(private http: HttpClient) { }
     url = 'https://api.spaceXdata.com/v3/launches?limit=100';
+
     getAllLaunchResults(year?: number, launch_status?: boolean, land_status?: boolean) {
         if (launch_status !== undefined) {
             this.launch = `&launch_success=${launch_status}`
@@ -19,6 +20,12 @@ export class LaunchService {
             this.land = `&land_success=${land_status}`
         }
         else { this.land = '' }
-        return this.http.get(`${this.url}${this.launch}${this.land}&launch_year=${year}`);
+        let finalUrl = `${this.url}${this.launch}${this.land}&launch_year=${year}`;
+        localStorage.setItem('url', finalUrl);
+        return this.http.get(finalUrl);
+    }
+
+    getDataByPersistedUrl(persistedUrl: string){
+        return this.http.get(persistedUrl);
     }
 }
