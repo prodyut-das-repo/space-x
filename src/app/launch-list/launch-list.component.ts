@@ -29,6 +29,8 @@ export class LaunchListComponent implements OnInit {
   }
 
   filterOnClick(year: number) {
+    this.launchStatusSelected = undefined;
+    this.landStatusSelected = undefined;
     this.yearSelected = year;
     this.getData(year, undefined, undefined);
   }
