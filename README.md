@@ -2,9 +2,16 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.18.
 
+## Demo
+
+Demo is hosted here, click the link below
+https://space-x-infinity.herokuapp.com/
+
+
 ## Server side rendering
 
 run `npm run ssr` to build and run the server
+Server will be up on `http://localhost:4000/`
 
 ## Development server
 
