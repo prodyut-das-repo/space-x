@@ -8,8 +8,13 @@ import { Component, Input, OnInit } from '@angular/core';
 export class LaunchCardsComponent implements OnInit {
 
   constructor() { }
-  @Input() launches: Array<any>;
+  //Inputs from parent
+  @Input() launches: Array<any> =[];
   @Input() showLoader: boolean;
+
+  /**
+   * on init
+   */
   ngOnInit() {
   }
 

@@ -10,6 +10,7 @@ import { LaunchService } from '../services/launch-data.service';
   styleUrls: ['./launch-list.component.scss']
 })
 export class LaunchListComponent implements OnInit {
+  //variables
   launchData: Array<any>;
   year = [];
   showLoader = false;
@@ -18,13 +19,20 @@ export class LaunchListComponent implements OnInit {
   landStatusSelected = undefined;
   routeUrl: any;
 
+  /**
+   * Creates an instance of launch list component.
+   * @param launchService 
+   * @param _platform_id 
+   * @param cd 
+   * @param router 
+   * @param route 
+   */
   constructor(private launchService: LaunchService, @Inject(PLATFORM_ID) private _platform_id: Object, private cd: ChangeDetectorRef,
     private router: Router,
     private route: ActivatedRoute,) {
     if (isPlatformBrowser(this._platform_id)) {
       this.yearSelected = 2014;
       let url = localStorage.getItem('url');
-      console.log(url);
       if (url === null) {
         this.getData(this.yearSelected, true, true);
       }
@@ -37,39 +45,19 @@ export class LaunchListComponent implements OnInit {
       }
     }
   }
-
+  /**
+   * on init
+   */
   ngOnInit() {
     for (let i = 2006; i < 2021; i++) {
       this.year.push(i);
     }
   }
 
-  // routeParams() {
-  //   this.route.url.subscribe((url: any) => {
-  //     console.log(url);
-
-  //     switch (url.length) {
-  //       case 1:
-  //         this.routeUrl = url[0].path;
-  //         break;
-  //       case 2:
-  //         this.routeUrl = url[0].path + '/' + url[1].path;
-  //         break;
-  //       case 3:
-  //         this.routeUrl = url[0].path + '/' + url[1].path + '/' + url[2].path;
-  //         break;
-  //       case 4:
-  //         this.routeUrl = url[0].path + '/' + url[1].path + '/' + url[2].path + '/' + url[3].path;
-  //         break;
-  //       default:
-  //         this.routeUrl = '';
-  //     }
-  //     console.log(url.length);
-  //     if (url.length === 2) {
-  //     }
-  //   })
-  // }
-
+  /**
+   * Filters on click
+   * @param year 
+   */
   filterOnClick(year: number) {
     this.launchStatusSelected = undefined;
     this.landStatusSelected = undefined;
@@ -77,6 +65,10 @@ export class LaunchListComponent implements OnInit {
     this.getData(year, undefined, undefined);
   }
 
+  /**
+   * Launch status
+   * @param status 
+   */
   launchStatus(status: boolean) {
     if (status) {
       if (this.landStatusSelected === true) {
@@ -104,6 +96,10 @@ export class LaunchListComponent implements OnInit {
     this.getData(this.yearSelected, status, this.landStatusSelected);
   }
 
+  /**
+   * Land status
+   * @param status 
+   */
   landStatus(status: boolean) {
     if (status) {
       if (this.launchStatusSelected === true) {
@@ -130,6 +126,13 @@ export class LaunchListComponent implements OnInit {
     this.landStatusSelected = status;
     this.getData(this.yearSelected, this.launchStatusSelected, status);
   }
+
+  /**
+   * Gets data
+   * @param [year] 
+   * @param [launch_status] 
+   * @param [land_status] 
+   */
   getData(year?: number, launch_status?: boolean, land_status?: boolean) {
     this.showLoader = true;
     this.launchService.getAllLaunchResults(year, launch_status, land_status).subscribe((results: any) => {

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { LaunchListComponent } from './launch-list/launch-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LaunchCardsComponent } from './launch-list/launch-cards/launch-cards.component';
+import { LaunchService } from './services/launch-data.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { LaunchCardsComponent } from './launch-list/launch-cards/launch-cards.co
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [LaunchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
