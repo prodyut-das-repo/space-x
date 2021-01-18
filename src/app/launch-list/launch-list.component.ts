@@ -30,11 +30,10 @@ export class LaunchListComponent implements OnInit {
   constructor(private launchService: LaunchService, @Inject(PLATFORM_ID) private _platform_id: Object, private cd: ChangeDetectorRef,
     private router: Router,
     private route: ActivatedRoute,) {
-    if (isPlatformBrowser(this._platform_id)) {
-      this.yearSelected = 2014;
-      let url = localStorage.getItem('url');
-      if (url === null) {
-        this.getData(this.yearSelected, true, true);
+    if (isPlatformBrowser(this._platform_id)) {      
+      let url = sessionStorage.getItem('url');
+      if (url === null || this.router.url === '/') {
+        this.initialize();
       }
       else {
         this.launchService.getDataByPersistedUrl(url).subscribe((results: any) => {
@@ -140,5 +139,11 @@ export class LaunchListComponent implements OnInit {
       this.showLoader = false;
       this.cd.markForCheck();
     });
+  }
+
+  initialize(){
+    this.launchService.initialApiCall().subscribe((result: any) => {
+      this.launchData = result;
+    })
   }
 }

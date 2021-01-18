@@ -1,15 +1,18 @@
 <div *ngIf="!showLoader && launches?.length > 0" class="main">
-  <h1>Launch Details</h1>
   <ul class="cards">
     <li class="cards_item" *ngFor="let launch of launches">
       <div class="card">
         <div class="card_image">
           <img src={{launch?.links?.mission_patch}}>
-          <img *ngIf="launch?.links?.mission_patch === null" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrcqM6uaWmu08JahpGJ9z4q5NkosS0nvvQbQ&usqp=CAU">
+          <img *ngIf="launch?.links?.mission_patch === null"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrcqM6uaWmu08JahpGJ9z4q5NkosS0nvvQbQ&usqp=CAU">
         </div>
         <div class="card_content">
-          <h5 class="text-white">{{launch?.mission_name}}</h5>
-          <p class="card_title">Mission ids: <label>{{launch?.mission_id[0]}}</label></p>
+          <h5>{{launch?.mission_name}} #{{launch?.flight_number}}</h5>
+          <p class="card_title">Mission ids:</p>
+          <ul *ngFor="let id of launch.mission_id">
+            <li>{{id}}</li>
+          </ul>
           <p class="card_title">Successful Year: <label>{{launch?.launch_year}}</label></p>
           <p class="card_title">Successful Launch: <label>{{launch?.launch_success}}</label>
             <label *ngIf="launch?.launch_success === null">Data Unavailable</label>
