@@ -30,8 +30,8 @@ export class LaunchListComponent implements OnInit {
   constructor(private launchService: LaunchService, @Inject(PLATFORM_ID) private _platform_id: Object, private cd: ChangeDetectorRef,
     private router: Router,
     private route: ActivatedRoute,) {
-    if (isPlatformBrowser(this._platform_id)) {      
-      let url = sessionStorage.getItem('url');
+    if (isPlatformBrowser(this._platform_id)) {
+      let url = sessionStorage.getItem('urlData');
       if (url === null || this.router.url === '/') {
         this.initialize();
       }
@@ -140,8 +140,11 @@ export class LaunchListComponent implements OnInit {
       this.cd.markForCheck();
     });
   }
-
-  initialize(){
+  
+  /**
+   * Initializes launch list component
+   */
+  initialize() {
     this.launchService.initialApiCall().subscribe((result: any) => {
       this.launchData = result;
     })

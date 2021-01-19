@@ -14,7 +14,7 @@ describe('LaunchListComponent', () => {
     const launchServiceStub = {
       getAllLaunchResults: () => ({ subscribe: f => f({body:'43'}) }),
       getDataByPersistedUrl: () => ({ subscribe: f => f({body:'43'}) }),
-
+      initialApiCall: () => ({ subscribe: f => f({body:'43'}) })
     }
     TestBed.configureTestingModule({
       declarations: [LaunchListComponent, LaunchListComponent],
@@ -72,6 +72,13 @@ describe('LaunchListComponent', () => {
       component.launchStatusSelected = undefined;
       component.landStatus(false);
       expect(component.landStatus).toHaveBeenCalled();
+    });
+  });
+
+  it('makes call to initialize ', () => {
+    fixture.whenStable().then(() => {
+      component.initialize();
+      expect(component.initialize).toHaveBeenCalled();
     });
   });
 });

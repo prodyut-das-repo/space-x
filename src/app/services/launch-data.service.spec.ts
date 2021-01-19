@@ -16,9 +16,15 @@ describe('DataService', () => {
         expect(service).toBeTruthy();
     });
     it('makes call to getAllLaunchResults ', () => {
-        service.getAllLaunchResults();
+        service.getAllLaunchResults(1212, true, true);
+    });
+    it('makes call to getAllLaunchResults ', () => {
+        service.getAllLaunchResults(undefined, undefined, undefined);
     });
     it('makes call to getDataByPersistedUrl ', () => {
         service.getDataByPersistedUrl('s');
+    });
+    it('makes call to initialApiCall ', () => {
+        service.initialApiCall();
     });
 });

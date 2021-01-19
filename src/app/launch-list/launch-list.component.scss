@@ -100,7 +100,6 @@ a {
     list-style: none;
     margin: 0;
     padding: 0;
-    justify-content: center;
 }
 
 .padding {
@@ -121,11 +120,7 @@ footer {
     padding: 10px;
 }
 
-// .scroll {
-//     height: 100vh;
-//     overflow-y: scroll;
-// }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 700px) {
     .side-menu {
         width: 100%;
     }
@@ -139,4 +134,23 @@ footer {
     .col-md-6 {
         width: 50%;
     }
+    .p-10{
+        padding: 10px;
+        padding-left: 72px;
+    }
+}
+
+@media screen 
+  and (min-width: 700px)
+  and (max-width: 1024px){
+    
+}
+@media screen 
+  and (min-width: 1024px)
+  and (max-width: 1440px){
+    
+}
+@media screen 
+  and (min-width: 1440px){
+   
 }

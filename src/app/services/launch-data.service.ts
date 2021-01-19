@@ -36,7 +36,7 @@ export class LaunchService {
         }
         else { this.land = '' }
         let finalUrl = `${this.url}${this.launch}${this.land}${this.year}`;
-        sessionStorage.setItem('url', finalUrl);
+        sessionStorage.setItem('urlData', finalUrl);
         return this.http.get(finalUrl);
     }
 
