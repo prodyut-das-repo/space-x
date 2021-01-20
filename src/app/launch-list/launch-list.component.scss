@@ -47,18 +47,18 @@ a {
 
 .btn-info {
     color: black;
-    background-color: #3ddd89;
-    border-color: #3ddd89;
+    background-color: #91dd3d;
+    border-color: #347e0b;
 }
 
 .btn-info:hover {
     color: black;
-    background-color: #19a05a;
+    background-color: #347e0b;
 }
 
 .btn-info:focus {
     color: black;
-    background-color: #209659;
+    background-color: #347e0b;
 }
 
 .label-header {
@@ -152,5 +152,10 @@ footer {
 }
 @media screen 
   and (min-width: 1440px){
-   
+   .main{
+       max-width: 1440px;
+   }
+   .fill{
+    width: -webkit-fill-available;
+   }
 }
